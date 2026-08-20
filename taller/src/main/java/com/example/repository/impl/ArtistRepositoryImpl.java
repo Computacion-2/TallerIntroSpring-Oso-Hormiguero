@@ -31,7 +31,7 @@ public class ArtistRepositoryImpl implements IArtistRepository {
 
         artist.setId(nextId);
         nextId++;
-        artist.add(artist);
+        artists.add(artist);
 
         return artist;
     }

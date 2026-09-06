@@ -1,0 +1,14 @@
+# Compilados y artefactos de Maven
+target/
+*.war
+*.class
+
+# IDE
+.idea/
+*.iml
+.settings/
+.classpath
+.project
+
+# Sistema operativo
+.DS_Store

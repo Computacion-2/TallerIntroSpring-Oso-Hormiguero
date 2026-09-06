@@ -18,7 +18,7 @@ import com.example.services.ITrackService;
 /**
  * Prueba unitaria para validar la Versión 2: Inyección de dependencias basada en Annotations
  * (@Repository, @Service, @Component, @Autowired, @PostConstruct, @PreDestroy)
- * cargada a través de applicationContext-annotations.xml / component-scan.
+ * cargada a través del component-scan declarado en applicationContext.xml.
  */
 public class AnnotationContextTest {
 
@@ -28,7 +28,7 @@ public class AnnotationContextTest {
 
     @BeforeEach
     public void setUp() {
-        context = new ClassPathXmlApplicationContext("applicationContext-annotations.xml");
+        context = new ClassPathXmlApplicationContext("applicationContext.xml");
         artistService = context.getBean("artistService", IArtistService.class);
         trackService = context.getBean("trackService", ITrackService.class);
     }

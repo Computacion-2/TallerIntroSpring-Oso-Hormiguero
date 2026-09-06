@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+    VERSION 2: CONFIGURACION BASADA EN ANNOTATIONS
+
+    OJO: este archivo NO es la version XML del taller. Aqui no se declara
+    ningun <bean>: su unica funcion es activar el escaneo de anotaciones.
+    Los beans se declaran en las propias clases con @Repository, @Service,
+    @Component y @Autowired.
+
+    La version XML pura (con <bean>, <constructor-arg> y <property>) vive en
+    la rama main, en este mismo archivo. Son archivos con el mismo nombre y
+    contenido totalmente distinto, no los confundas al comparar las ramas.
+-->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
@@ -7,11 +19,10 @@
            http://www.springframework.org/schema/context
            http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!-- ==================== VERSIÓN 2: CONFIGURACIÓN BASADA EN ANNOTATIONS ==================== -->
-    <!-- Habilita el procesamiento de anotaciones como @Autowired, @PostConstruct, @PreDestroy -->
+    <!-- Habilita el procesamiento de @Autowired, @PostConstruct y @PreDestroy -->
     <context:annotation-config/>
 
-    <!-- Escanea los componentes anotados con @Repository, @Service, @Component en com.example -->
+    <!-- Escanea los componentes anotados con @Repository, @Service y @Component -->
     <context:component-scan base-package="com.example"/>
 
 </beans>

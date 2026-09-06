@@ -2,97 +2,14 @@
 <web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
-                             https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
-         version="6.0">
+                             https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
 
     <display-name>Music Discography Manager</display-name>
 
-    <!-- ==================== SPRING CONTEXT LISTENER ==================== -->
-    <listener>
-        <listener-class>com.example.servlets.AppContextListener</listener-class>
-    </listener>
+    <!-- Los servlets se registran con @WebServlet y el contexto de Spring
+         con @WebListener en AppContextListener, por eso aqui no se declaran. -->
 
-    <!-- ==================== SERVLETS ==================== -->
-    <!-- Home Servlet -->
-    <servlet>
-        <servlet-name>HomeServlet</servlet-name>
-        <servlet-class>com.example.servlets.HomeServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>HomeServlet</servlet-name>
-        <url-pattern>/home</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>HomeServlet</servlet-name>
-        <url-pattern>/index.html</url-pattern>
-    </servlet-mapping>
-
-    <!-- Artistas -->
-    <servlet>
-        <servlet-name>ArtistListServlet</servlet-name>
-        <servlet-class>com.example.servlets.ArtistListServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ArtistListServlet</servlet-name>
-        <url-pattern>/artists</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>ArtistCreateServlet</servlet-name>
-        <servlet-class>com.example.servlets.ArtistCreateServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ArtistCreateServlet</servlet-name>
-        <url-pattern>/artists/create</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>ArtistSearchServlet</servlet-name>
-        <servlet-class>com.example.servlets.ArtistSearchServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ArtistSearchServlet</servlet-name>
-        <url-pattern>/artists/search</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>ArtistDeleteServlet</servlet-name>
-        <servlet-class>com.example.servlets.ArtistDeleteServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ArtistDeleteServlet</servlet-name>
-        <url-pattern>/artists/delete</url-pattern>
-    </servlet-mapping>
-
-    <!-- Canciones (Tracks) -->
-    <servlet>
-        <servlet-name>TrackListServlet</servlet-name>
-        <servlet-class>com.example.servlets.TrackListServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>TrackListServlet</servlet-name>
-        <url-pattern>/tracks</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>TrackCreateServlet</servlet-name>
-        <servlet-class>com.example.servlets.TrackCreateServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>TrackCreateServlet</servlet-name>
-        <url-pattern>/tracks/create</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>TrackDeleteServlet</servlet-name>
-        <servlet-class>com.example.servlets.TrackDeleteServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>TrackDeleteServlet</servlet-name>
-        <url-pattern>/tracks/delete</url-pattern>
-    </servlet-mapping>
-
-    <!-- Welcome File -->
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>

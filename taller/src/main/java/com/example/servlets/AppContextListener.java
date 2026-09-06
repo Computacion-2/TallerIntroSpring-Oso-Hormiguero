@@ -1,7 +1,9 @@
 package com.example.servlets;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.example.config.AppConfig;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletContextEvent;
@@ -13,11 +15,11 @@ public class AppContextListener implements ServletContextListener {
 
     public static final String SPRING_CONTEXT_KEY = "SPRING_APPLICATION_CONTEXT";
 
-    private ClassPathXmlApplicationContext springContext;
+    private AnnotationConfigApplicationContext springContext;
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        springContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        springContext = new AnnotationConfigApplicationContext(AppConfig.class);
         sce.getServletContext().setAttribute(SPRING_CONTEXT_KEY, springContext);
     }
 

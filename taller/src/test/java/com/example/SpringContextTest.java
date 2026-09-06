@@ -8,8 +8,9 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import com.example.config.AppConfig;
 import com.example.model.Artist;
 import com.example.model.Track;
 import com.example.services.IArtistService;
@@ -23,7 +24,7 @@ public class SpringContextTest {
 
     @BeforeEach
     public void setUp() {
-        context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        context = new AnnotationConfigApplicationContext(AppConfig.class);
         artistService = context.getBean("artistService", IArtistService.class);
         trackService = context.getBean("trackService", ITrackService.class);
     }

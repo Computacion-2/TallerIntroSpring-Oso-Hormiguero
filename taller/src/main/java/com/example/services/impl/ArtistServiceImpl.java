@@ -2,10 +2,14 @@ package com.example.services.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.example.model.Artist;
 import com.example.repository.IArtistRepository;
 import com.example.services.IArtistService;
 
+@Service("artistService")
 public class ArtistServiceImpl implements IArtistService {
 
     private IArtistRepository artistRepository;
@@ -13,6 +17,7 @@ public class ArtistServiceImpl implements IArtistService {
     public ArtistServiceImpl() {
     }
 
+    @Autowired
     public ArtistServiceImpl(IArtistRepository artistRepository) {
         this.artistRepository = artistRepository;
     }

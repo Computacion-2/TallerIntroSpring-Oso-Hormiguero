@@ -1,14 +1,18 @@
 package com.example.util;
 
-import java.util.Collections;
-import java.util.List;
 import java.util.logging.Logger;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.example.model.Artist;
 import com.example.model.Track;
 import com.example.repository.IArtistRepository;
 import com.example.repository.ITrackRepository;
 
+import jakarta.annotation.PostConstruct;
+
+@Component("dataInitializer")
 public class DataInitializer {
 
     private static final Logger logger = Logger.getLogger(DataInitializer.class.getName());
@@ -19,6 +23,7 @@ public class DataInitializer {
     public DataInitializer() {
     }
 
+    @Autowired
     public DataInitializer(IArtistRepository artistRepository, ITrackRepository trackRepository) {
         this.artistRepository = artistRepository;
         this.trackRepository = trackRepository;
@@ -32,8 +37,9 @@ public class DataInitializer {
         this.trackRepository = trackRepository;
     }
 
+    @PostConstruct
     public void init() {
-        logger.info("DataInitializer: Inicializando datos de 10 artistas y 50 canciones...");
+        logger.info("DataInitializer (@Component): Inicializando datos de 10 artistas y 50 canciones mediante @PostConstruct...");
 
         // 1. Crear 10 Artistas
         Artist a1 = artistRepository.create(new Artist(0, "Queen", "Reino Unido"));

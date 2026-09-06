@@ -16,10 +16,11 @@ import com.example.services.IArtistService;
 import com.example.services.ITrackService;
 
 /**
- * Prueba unitaria para validar la Versión 1: Inyección de dependencias 100% XML
- * cargada a través de applicationContext-xml.xml.
+ * Prueba unitaria para validar la Versión 2: Inyección de dependencias basada en Annotations
+ * (@Repository, @Service, @Component, @Autowired, @PostConstruct, @PreDestroy)
+ * cargada a través de applicationContext-annotations.xml / component-scan.
  */
-public class SpringContextTest {
+public class AnnotationContextTest {
 
     private ApplicationContext context;
     private IArtistService artistService;
@@ -27,21 +28,21 @@ public class SpringContextTest {
 
     @BeforeEach
     public void setUp() {
-        context = new ClassPathXmlApplicationContext("applicationContext-xml.xml");
+        context = new ClassPathXmlApplicationContext("applicationContext-annotations.xml");
         artistService = context.getBean("artistService", IArtistService.class);
         trackService = context.getBean("trackService", ITrackService.class);
     }
 
     @Test
-    public void testXmlContextAndInitialData() {
-        assertNotNull(artistService);
-        assertNotNull(trackService);
+    public void testAnnotationContextAndInitialData() {
+        assertNotNull(artistService, "artistService debe haber sido inyectado vía @Service");
+        assertNotNull(trackService, "trackService debe haber sido inyectado vía @Service");
 
         List<Artist> artists = artistService.findAll();
         List<Track> tracks = trackService.findAll();
 
-        assertEquals(10, artists.size(), "Deben haberse inicializado exactamente 10 artistas en XML");
-        assertEquals(50, tracks.size(), "Deben haberse inicializado exactamente 50 canciones en XML");
+        assertEquals(10, artists.size(), "DataInitializer (@Component + @PostConstruct) debe haber cargado 10 artistas");
+        assertEquals(50, tracks.size(), "DataInitializer (@Component + @PostConstruct) debe haber cargado 50 canciones");
     }
 
     @Test

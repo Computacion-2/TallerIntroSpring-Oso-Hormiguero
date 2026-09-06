@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.example.SpringContextTest" time="0.096" tests="6" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.example.AnnotationContextTest" time="2.346" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="25"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -59,7 +59,51 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="69.0"/>
   </properties>
-  <testcase name="testDeleteTrack" classname="com.example.SpringContextTest" time="0.027">
+  <testcase name="testDeleteTrack" classname="com.example.AnnotationContextTest" time="1.447">
+    <system-err><![CDATA[sept 06, 2026 12:45:28 P. M. com.example.repository.impl.ArtistRepositoryImpl init
+INFO: ArtistRepositoryImpl: Bean inicializado con @PostConstruct (@Repository)
+sept 06, 2026 12:45:28 P. M. com.example.repository.impl.TrackRepositoryImpl init
+INFO: TrackRepositoryImpl: Bean inicializado con @PostConstruct (@Repository)
+sept 06, 2026 12:45:28 P. M. com.example.util.DataInitializer init
+INFO: DataInitializer (@Component): Inicializando datos de 10 artistas y 50 canciones mediante @PostConstruct...
+sept 06, 2026 12:45:28 P. M. com.example.util.DataInitializer init
+INFO: DataInitializer: Inicialización completada con éxito. 10 Artistas y 50 Canciones cargadas.
+]]></system-err>
+  </testcase>
+  <testcase name="testAnnotationContextAndInitialData" classname="com.example.AnnotationContextTest" time="0.223">
+    <system-err><![CDATA[sept 06, 2026 12:45:29 P. M. com.example.repository.impl.ArtistRepositoryImpl init
+INFO: ArtistRepositoryImpl: Bean inicializado con @PostConstruct (@Repository)
+sept 06, 2026 12:45:29 P. M. com.example.repository.impl.TrackRepositoryImpl init
+INFO: TrackRepositoryImpl: Bean inicializado con @PostConstruct (@Repository)
+sept 06, 2026 12:45:29 P. M. com.example.util.DataInitializer init
+INFO: DataInitializer (@Component): Inicializando datos de 10 artistas y 50 canciones mediante @PostConstruct...
+sept 06, 2026 12:45:29 P. M. com.example.util.DataInitializer init
+INFO: DataInitializer: Inicialización completada con éxito. 10 Artistas y 50 Canciones cargadas.
+]]></system-err>
+  </testcase>
+  <testcase name="testDeleteArtist" classname="com.example.AnnotationContextTest" time="0.169">
+    <system-err><![CDATA[sept 06, 2026 12:45:29 P. M. com.example.repository.impl.ArtistRepositoryImpl init
+INFO: ArtistRepositoryImpl: Bean inicializado con @PostConstruct (@Repository)
+sept 06, 2026 12:45:29 P. M. com.example.repository.impl.TrackRepositoryImpl init
+INFO: TrackRepositoryImpl: Bean inicializado con @PostConstruct (@Repository)
+sept 06, 2026 12:45:29 P. M. com.example.util.DataInitializer init
+INFO: DataInitializer (@Component): Inicializando datos de 10 artistas y 50 canciones mediante @PostConstruct...
+sept 06, 2026 12:45:29 P. M. com.example.util.DataInitializer init
+INFO: DataInitializer: Inicialización completada con éxito. 10 Artistas y 50 Canciones cargadas.
+]]></system-err>
+  </testcase>
+  <testcase name="testCreateTrackWithMultipleArtists" classname="com.example.AnnotationContextTest" time="0.169">
+    <system-err><![CDATA[sept 06, 2026 12:45:29 P. M. com.example.repository.impl.ArtistRepositoryImpl init
+INFO: ArtistRepositoryImpl: Bean inicializado con @PostConstruct (@Repository)
+sept 06, 2026 12:45:29 P. M. com.example.repository.impl.TrackRepositoryImpl init
+INFO: TrackRepositoryImpl: Bean inicializado con @PostConstruct (@Repository)
+sept 06, 2026 12:45:29 P. M. com.example.util.DataInitializer init
+INFO: DataInitializer (@Component): Inicializando datos de 10 artistas y 50 canciones mediante @PostConstruct...
+sept 06, 2026 12:45:29 P. M. com.example.util.DataInitializer init
+INFO: DataInitializer: Inicialización completada con éxito. 10 Artistas y 50 Canciones cargadas.
+]]></system-err>
+  </testcase>
+  <testcase name="testCreateArtist" classname="com.example.AnnotationContextTest" time="0.159">
     <system-err><![CDATA[sept 06, 2026 12:45:30 P. M. com.example.repository.impl.ArtistRepositoryImpl init
 INFO: ArtistRepositoryImpl: Bean inicializado con @PostConstruct (@Repository)
 sept 06, 2026 12:45:30 P. M. com.example.repository.impl.TrackRepositoryImpl init
@@ -70,51 +114,7 @@ sept 06, 2026 12:45:30 P. M. com.example.util.DataInitializer init
 INFO: DataInitializer: Inicialización completada con éxito. 10 Artistas y 50 Canciones cargadas.
 ]]></system-err>
   </testcase>
-  <testcase name="testDeleteArtist" classname="com.example.SpringContextTest" time="0.012">
-    <system-err><![CDATA[sept 06, 2026 12:45:30 P. M. com.example.repository.impl.ArtistRepositoryImpl init
-INFO: ArtistRepositoryImpl: Bean inicializado con @PostConstruct (@Repository)
-sept 06, 2026 12:45:30 P. M. com.example.repository.impl.TrackRepositoryImpl init
-INFO: TrackRepositoryImpl: Bean inicializado con @PostConstruct (@Repository)
-sept 06, 2026 12:45:30 P. M. com.example.util.DataInitializer init
-INFO: DataInitializer (@Component): Inicializando datos de 10 artistas y 50 canciones mediante @PostConstruct...
-sept 06, 2026 12:45:30 P. M. com.example.util.DataInitializer init
-INFO: DataInitializer: Inicialización completada con éxito. 10 Artistas y 50 Canciones cargadas.
-]]></system-err>
-  </testcase>
-  <testcase name="testXmlContextAndInitialData" classname="com.example.SpringContextTest" time="0.014">
-    <system-err><![CDATA[sept 06, 2026 12:45:30 P. M. com.example.repository.impl.ArtistRepositoryImpl init
-INFO: ArtistRepositoryImpl: Bean inicializado con @PostConstruct (@Repository)
-sept 06, 2026 12:45:30 P. M. com.example.repository.impl.TrackRepositoryImpl init
-INFO: TrackRepositoryImpl: Bean inicializado con @PostConstruct (@Repository)
-sept 06, 2026 12:45:30 P. M. com.example.util.DataInitializer init
-INFO: DataInitializer (@Component): Inicializando datos de 10 artistas y 50 canciones mediante @PostConstruct...
-sept 06, 2026 12:45:30 P. M. com.example.util.DataInitializer init
-INFO: DataInitializer: Inicialización completada con éxito. 10 Artistas y 50 Canciones cargadas.
-]]></system-err>
-  </testcase>
-  <testcase name="testCreateTrackWithMultipleArtists" classname="com.example.SpringContextTest" time="0.01">
-    <system-err><![CDATA[sept 06, 2026 12:45:30 P. M. com.example.repository.impl.ArtistRepositoryImpl init
-INFO: ArtistRepositoryImpl: Bean inicializado con @PostConstruct (@Repository)
-sept 06, 2026 12:45:30 P. M. com.example.repository.impl.TrackRepositoryImpl init
-INFO: TrackRepositoryImpl: Bean inicializado con @PostConstruct (@Repository)
-sept 06, 2026 12:45:30 P. M. com.example.util.DataInitializer init
-INFO: DataInitializer (@Component): Inicializando datos de 10 artistas y 50 canciones mediante @PostConstruct...
-sept 06, 2026 12:45:30 P. M. com.example.util.DataInitializer init
-INFO: DataInitializer: Inicialización completada con éxito. 10 Artistas y 50 Canciones cargadas.
-]]></system-err>
-  </testcase>
-  <testcase name="testCreateArtist" classname="com.example.SpringContextTest" time="0.014">
-    <system-err><![CDATA[sept 06, 2026 12:45:30 P. M. com.example.repository.impl.ArtistRepositoryImpl init
-INFO: ArtistRepositoryImpl: Bean inicializado con @PostConstruct (@Repository)
-sept 06, 2026 12:45:30 P. M. com.example.repository.impl.TrackRepositoryImpl init
-INFO: TrackRepositoryImpl: Bean inicializado con @PostConstruct (@Repository)
-sept 06, 2026 12:45:30 P. M. com.example.util.DataInitializer init
-INFO: DataInitializer (@Component): Inicializando datos de 10 artistas y 50 canciones mediante @PostConstruct...
-sept 06, 2026 12:45:30 P. M. com.example.util.DataInitializer init
-INFO: DataInitializer: Inicialización completada con éxito. 10 Artistas y 50 Canciones cargadas.
-]]></system-err>
-  </testcase>
-  <testcase name="testFindArtistByNameWithTracks" classname="com.example.SpringContextTest" time="0.012">
+  <testcase name="testFindArtistByNameWithTracks" classname="com.example.AnnotationContextTest" time="0.145">
     <system-err><![CDATA[sept 06, 2026 12:45:30 P. M. com.example.repository.impl.ArtistRepositoryImpl init
 INFO: ArtistRepositoryImpl: Bean inicializado con @PostConstruct (@Repository)
 sept 06, 2026 12:45:30 P. M. com.example.repository.impl.TrackRepositoryImpl init

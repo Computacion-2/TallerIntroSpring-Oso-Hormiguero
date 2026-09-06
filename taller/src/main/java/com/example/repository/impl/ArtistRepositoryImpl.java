@@ -5,10 +5,16 @@ import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
+import org.springframework.stereotype.Repository;
+
 import com.example.model.Artist;
 import com.example.model.Track;
 import com.example.repository.IArtistRepository;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+
+@Repository("artistRepository")
 public class ArtistRepositoryImpl implements IArtistRepository {
     
     private final List<Artist> artists = new ArrayList<>();
@@ -16,13 +22,15 @@ public class ArtistRepositoryImpl implements IArtistRepository {
     private final Logger logger = Logger.getLogger(ArtistRepositoryImpl.class.getName());
 
     @Override
+    @PostConstruct
     public void init() {
-        logger.info("ArtistRepositoryImpl: Bean inicializandose...");
+        logger.info("ArtistRepositoryImpl: Bean inicializado con @PostConstruct (@Repository)");
     }
 
     @Override
+    @PreDestroy
     public void destroy() {
-        logger.info("ArtistRepositoryImpl: Bean a punto de destruirse...");
+        logger.info("ArtistRepositoryImpl: Bean a punto de destruirse con @PreDestroy");
     }
 
     @Override

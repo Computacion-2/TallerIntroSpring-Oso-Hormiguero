@@ -5,10 +5,16 @@ import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
+import org.springframework.stereotype.Repository;
+
 import com.example.model.Artist;
 import com.example.model.Track;
 import com.example.repository.ITrackRepository;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+
+@Repository("trackRepository")
 public class TrackRepositoryImpl implements ITrackRepository {
     
     private final List<Track> tracks = new ArrayList<>();
@@ -16,13 +22,15 @@ public class TrackRepositoryImpl implements ITrackRepository {
     private final Logger logger = Logger.getLogger(TrackRepositoryImpl.class.getName());
 
     @Override
+    @PostConstruct
     public void init() {
-        logger.info("TrackRepositoryImpl: Bean inicializandose...");
+        logger.info("TrackRepositoryImpl: Bean inicializado con @PostConstruct (@Repository)");
     }
 
     @Override
+    @PreDestroy
     public void destroy() {
-        logger.info("TrackRepositoryImpl: Bean a punto de destruirse...");
+        logger.info("TrackRepositoryImpl: Bean a punto de destruirse con @PreDestroy");
     }
 
     @Override

@@ -2,12 +2,16 @@ package com.example.services.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.example.model.Artist;
 import com.example.model.Track;
 import com.example.repository.IArtistRepository;
 import com.example.repository.ITrackRepository;
 import com.example.services.ITrackService;
 
+@Service("trackService")
 public class TrackServiceImpl implements ITrackService {
 
     private ITrackRepository trackRepository;
@@ -20,6 +24,7 @@ public class TrackServiceImpl implements ITrackService {
         this.trackRepository = trackRepository;
     }
 
+    @Autowired
     public TrackServiceImpl(ITrackRepository trackRepository, IArtistRepository artistRepository) {
         this.trackRepository = trackRepository;
         this.artistRepository = artistRepository;

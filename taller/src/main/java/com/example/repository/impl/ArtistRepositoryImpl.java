@@ -2,42 +2,88 @@ package com.example.repository.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 import com.example.model.Artist;
+import com.example.model.Track;
 import com.example.repository.IArtistRepository;
 
 public class ArtistRepositoryImpl implements IArtistRepository {
     
-    private List<Artist> artists = new ArrayList<>();
+    private final List<Artist> artists = new ArrayList<>();
     private int nextId = 1;
-    private Logger logger = Logger.getLogger(ArtistRepositoryImpl.class.getName());
+    private final Logger logger = Logger.getLogger(ArtistRepositoryImpl.class.getName());
 
     @Override
-    public void init(){
-        logger.info("Bean inicializandose");
+    public void init() {
+        logger.info("ArtistRepositoryImpl: Bean inicializandose...");
     }
 
     @Override
     public void destroy() {
-        logger.info("Bean a punto de destruirse");
+        logger.info("ArtistRepositoryImpl: Bean a punto de destruirse...");
     }
 
     @Override
-    public Artist create(Artist artist){
-        if(artist == null) {
+    public Artist create(Artist artist) {
+        if (artist == null) {
             return null;
         }
 
-        artist.setId(nextId);
-        nextId++;
+        artist.setId(nextId++);
         artists.add(artist);
-
         return artist;
     }
 
     @Override
     public List<Artist> findAll() {
-        return artists;
+        return new ArrayList<>(artists);
+    }
+
+    @Override
+    public Optional<Artist> findById(Integer id) {
+        if (id == null) {
+            return Optional.empty();
+        }
+
+        return artists.stream()
+                .filter(a -> id.equals(a.getId()))
+                .findFirst();
+    }
+
+    @Override
+    public Optional<Artist> findByName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            return Optional.empty();
+        }
+
+        String search = name.trim();
+        return artists.stream()
+                .filter(a -> a.getName() != null && a.getName().equalsIgnoreCase(search))
+                .findFirst();
+    }
+
+    @Override
+    public boolean deleteById(Integer id) {
+        if (id == null) {
+            return false;
+        }
+
+        Optional<Artist> artistOpt = findById(id);
+        if (artistOpt.isPresent()) {
+            Artist artist = artistOpt.get();
+            // Desvincular de todas las pistas asociadas
+            if (artist.getTracks() != null) {
+                List<Track> associatedTracks = new ArrayList<>(artist.getTracks());
+                for (Track track : associatedTracks) {
+                    track.removeArtist(artist);
+                }
+            }
+            artists.remove(artist);
+            return true;
+        }
+
+        return false;
     }
 }

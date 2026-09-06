@@ -1,14 +1,23 @@
 package com.example.services.impl;
 
+import java.util.List;
+
 import com.example.model.Artist;
 import com.example.repository.IArtistRepository;
 import com.example.services.IArtistService;
 
 public class ArtistServiceImpl implements IArtistService {
-    
+
     private IArtistRepository artistRepository;
 
+    public ArtistServiceImpl() {
+    }
+
     public ArtistServiceImpl(IArtistRepository artistRepository) {
+        this.artistRepository = artistRepository;
+    }
+
+    public void setArtistRepository(IArtistRepository artistRepository) {
         this.artistRepository = artistRepository;
     }
 
@@ -19,8 +28,28 @@ public class ArtistServiceImpl implements IArtistService {
     }
 
     @Override
-    public List<Artist> findAll(){
+    public Artist create(Artist artist) {
+        return artistRepository.create(artist);
+    }
+
+    @Override
+    public List<Artist> findAll() {
         return artistRepository.findAll();
     }
 
+    @Override
+    public Artist findById(Integer id) {
+        return artistRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Artista no encontrado con ID: " + id));
+    }
+
+    @Override
+    public Artist findByName(String name) {
+        return artistRepository.findByName(name).orElse(null);
+    }
+
+    @Override
+    public boolean deleteById(int id) {
+        return artistRepository.deleteById(id);
+    }
 }
